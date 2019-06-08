@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+  <body>
+   
+      <div id=box></div>
+    
+   <script>
+     var box = document.querySelector('#box');
+
+      class DomInner {
+        constructor(el) {
+          this.el = el;
+        }
+
+        get html() {
+          return this.el.innerHTML
+        }
+
+        set html(val) {
+          this.el.innerHTML = val;
+        }
+      }
+      var p = new DomInner(box)
+      p.html = '你好'
+      console.log(p.html)
+
+
+   </script>
+
+
+  </body>
+</html>

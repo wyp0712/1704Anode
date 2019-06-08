@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+       var statement = 'hello world'
+       console.log(statement, 'statement')
+       console.log(window)
+
+        // hoist
+        // var a
+        
+        /**
+        * let 声明变量 没有声明提前，let声明一个变量之前，不能出现此变量
+        * 用let不能重复声明同一变量
+        * let 声明的变量不会被赴到window上
+        * 传统js，var有声明提升，就算代码块没有执行，也会声明提升，污染外部变量
+        * let给我们提供了块级作用域，{},for(){}  if(){}else{} while(){}
+        * 暂时性死区：在块级作用域内let声明的变量，会暂时锁死在此作用域内，其他作用作用域不能用
+        */
+
+        // console.log(a) // undefined
+        // let a = 10;
+        // console.log(a) // 10
+        // let a = 20;
+        // console.log(a) // 20
+        // let a = 10;
+        // console.log(window.a)
+
+        // var a = 3;
+        // function fun() {
+        //     a*=2;
+        //     let a=2;
+        //     console.log(a)
+        // }
+        // fun() // 2
+        // console.log(a) // 3
+
+
+        // 传统js，var有声明提升，就算代码块没有执行，也会声明提升，污染外部变量
+        // let给我们提供了块级作用域，{},for(){}  if(){}else{} while(){}
+
+        // var t = 0; // 记录时间
+        // function connect() {
+        //     console.log('后台连接成功，耗时0.3s')
+        //     t+=0.3
+        // }
+        // function response() { //hoist
+        //     // var t 
+        //     console.log('服务器相应数据，耗时0.5s')
+        //     var error = false;
+        //     if (error) { // 
+        //         console.log('服务器报错')
+        //         var t = new Date() // 记录当前时间
+        //     }
+        //     t+=0.5
+        //     console.log(t)
+        // }
+        // connect()
+        // response()
+        // console.log(t) //0.8
+
+        // 暂时性死区：在块级作用域内let声明的变量，会暂时锁死在此作用域内，其他作用作用域不能用
+        // {
+        //     let b = 10;
+        //     console.log(b)
+        // }
+        // console.log(b)
+
+        // var arr = []
+        // for(let i = 0; i < 5; i++) {
+        //     arr[i] = function() {
+        //         console.log(i)
+        //     }
+        // }
+        // // arr[0] = function() {
+        // //     console.log(0)
+        // // }
+        // // arr[1] = function() {
+        // //     console.log(1)
+        // // }
+        // // arr[2] = function() {
+        // //     console.log(2)
+        // // }
+        // arr[1]()  // undefined  报错  4 5 3 1
+        // arr[2]()  // 3 5 2  2
+        // console.log(b)
+        // { //块级作用域，暂时性死区
+        //     let b = 10;
+        //     console.log(b)
+        // }
+        // console.log(b)
+
+        /**
+        * const 声明常量 var/let 声明变量
+        * const声明的变量大部分情况下不可更改,引用数据类型，数组或对象可以通过[下标]或.的方式去更改
+        */
+        
+        // const PI = 3.1415926535897932384626433832795028861971;
+        // PI = 3.15;
+
+        // const arr = [1,2,3];
+        // arr[0] = 2;
+        // console.log(arr)
+
+        // const obj = {
+        //     name : "zhangsan",
+        //     age: 20
+        // }
+        // // obj = {name:"zhangsan", age: 21}
+        // obj.age = 21;
+        // console.log(obj)
+
+
+
+        /**
+        * 字符串 
+        * 模板字符串 `${js语句}`
+        * trim()  trimLeft()  trimRight()
+        * includes  startsWith  endsWith   =>  boolean  判断字符串中有没有某个字符串，以什么开头，以什么结尾
+        * repeat  重复n次   str.repeat()  向下取整
+        * padStart(填充之后的长度，填充的内容) padEnd
+        */
+
+        //console.log(a) //  a id not defined
+        // let a = 10;
+        // console.log(window.a)
+        // {
+        //     let b = 10;
+        // }
+        // console.log(b)
+
+        // const PI = 3.14;
+        // PI = 3.15;
+
+        // const obj = {
+        //     name: "zd",
+        //     age: 20
+        // }
+        // // obj = {name:'zd', age:21};
+        // obj.age = 21;
+
+        // `${js}`
+        // trim trimLeft trimRight
+        // includes  startsWith  endsWith
+        // repeat  "a".repeat(5.9999)
+        // padStart padEnd(填充之后的长度，填充的内容)
+        // "aa".padStart(5) =>    aa
+
+    </script>
+</body>
+</html>

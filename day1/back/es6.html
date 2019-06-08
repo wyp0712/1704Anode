@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>好的代码像粥一样，都是用时间熬出来的</title>
+</head>
+
+<body>
+
+
+
+  <script>
+    /*
+     es5 声明：var 
+
+     变量提升
+    */
+
+    /*
+    es6 声明： let const
+
+    1. 没有变量提升：
+
+    2. 暂时性死区：在代码块内，使用let命令声明变量之前，该变量都是不可用的。
+
+    所以在let声明变量前，对变量赋值会报错。
+
+    3. 不允许重复声明：
+
+    4. 块级作用域
+      允许在块级作用域内声明函数。
+      函数声明类似于var，即会提升到全局作用域或函数作用域的头部。
+      同时，函数声明还会提升到所在的块级作用域的头部。
+
+    */
+
+    for (let i = 0; i < 3; i++) { // 父作用域
+      let i = 'abc'; // 子作用域
+      console.log(i);
+    }
+
+
+    // 暂时性死区
+    // if (true) {
+    //   // TDZ开始
+    //   // tmp = 'abc'; // ReferenceError
+    //   // console.log(tmp); // ReferenceError
+    //   let tmp; // TDZ结束
+    //   console.log(tmp); // undefined
+
+    //   tmp = 123;
+    //   console.log(tmp); // 123
+    // }
+
+    // typeof x; // ReferenceError
+    // let x;
+
+    /* 
+
+     所以，在没有let之前，typeof运算符是百分之百安全的，永远不会报错。
+     现在这一点不成立了。这样的设计是为了让大家养成良好的编程习惯，变量一定要在声明之后使用，否则就报错。
+    
+    */
+
+    // 3. 不允许重复声明：
+    // 报错
+    // function func() {
+    //   let a = 10;
+    //   var a = 1;
+    // }
+
+    // // 报错
+    // function func() {
+    //   let a = 10;
+    //   let a = 1;
+    // }
+
+    // 不能在函数内部重新声明参数。
+    // function func(arg) {
+    //   let arg;
+    // }
+    // // func() // 报错
+
+    // function func(arg) {
+    //   {
+    //     let arg;
+    //   }
+    // }
+    // func() // 不报错
+
+
+    // 4. 块级作用域
+
+    // var tmp = new Date();
+
+    // function f() {
+    //   console.log(tmp);
+    //   if (false) {
+    //     var tmp = 'hello world';
+    //   }
+
+    // }
+
+    // console.log(f()); // undefined
+    // var s = 'hello';
+    // for (var i = 0; i < s.length; i++) {
+    //   console.log(s[i]);
+    // }
+    // console.log(i); // 5
+
+    // function f1() {
+    //   let n = 5;
+    //   if (true) {
+    //     let n = 10;
+    //   }
+    //   console.log(n); // 5
+    // }
+    // ES6 允许块级作用域的任意嵌套。
+
+    let temp = 'hello world';
+    function f2() {
+      console.log(temp, 'f2')
+    }
+    f2()
+    // 内层作用域可以定义外层作用域的同名变量。
+    // 块级作用域的出现，实际上使得获得广泛应用的立即执行函数表达式（IIFE）不再必要了。
+    // IIFE 写法
+    //       (function () {
+    //         var tmp = ...;
+    //   ...
+    // }());
+
+    //     // 块级作用域写法
+    //     {
+    //       let tmp = ...;
+    //   ...
+    //     }
+
+
+    // ES6 引入了块级作用域，明确允许在块级作用域之中声明函数。
+    // ES6 规定，块级作用域之中，函数声明语句的行为类似于let，在块级作用域之外不可引用。
+    // 考虑到环境导致的行为差异太大，应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。
+    // ES6 的块级作用域必须有大括号，如果没有大括号，JavaScript 引擎就认为不存在块级作用域。
+    // 第一种写法，报错
+    // if (true) let x = 1;
+
+
+  </script>
+</body>
+
+</html>
