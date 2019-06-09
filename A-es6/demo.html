@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    //  console.log(1)
+    // console.log(typeof typeof 1) // 'number'
+    // console.log(typeof typeof 'hello world') // 'string'
+    // console.log(typeof typeof function(){}) // 'function'
+
+    // var myclass = new class myClass {
+    //   constructor(val) {
+    //      console.log(val, 'val')
+    //   }
+    //   init() {
+
+    //   }
+    // }('devin')
+
+
+    function sort(element) {
+      for (var i = 0; i < element.length - 1; i++) {
+        for (var j = 0; j < element.length - i - 1; j++) {
+          if (element[j] > element[j + 1]) {
+            //把大的数字放到后面
+            var swap = element[j];
+            element[j] = element[j + 1];
+            element[j + 1] = swap;
+          }
+        }
+      }
+      console.log(element, 'element')
+      return element
+    }
+    var element = [3, 5, 1, 2, 7, 8, 4, 5, 3, 4];
+    sort(element, 'element')
+
+
+    
+
+    class myClass {
+      constructor() {
+        // console.log(this)
+        // this.init()
+        this.render = this.render.bind(this);
+        // this.render = () => this;
+      }
+      init() {
+        console.log('this is init Fn')
+      }
+      render() {
+        console.log(this, 'this')
+        this.init()
+      }
+
+      static bar() {
+
+      }
+    }
+
+    // /如果将这个方法提取出来单独使用/
+    let { init, render, bar } = new myClass()
+    //  console.log(render, 'render')
+    render()
+    console.log(bar)
+
+
+  </script>
+</body>
+
+</html>
