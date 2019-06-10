@@ -1,0 +1,17 @@
+// class Point {
+//   constructor() {
+//     this.add = this.add.bind(this);
+//   }
+// }
+// var p = new Point()
+
+
+// var funcs = []
+// for (var i = 0; i < 10; i++) {
+//   funcs.push(function () {
+//     console.log(i)
+//   })
+// }
+// funcs.forEach(function (func) {
+//   func(); //输出十个10
+// })
