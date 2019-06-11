@@ -63,43 +63,53 @@
 <body>
 
 
+
+
   <button class="btns">点击出现蒙层</button>
-  <script src="./dialog-class.js"></script>
+
+  <script src="./dialog.js"></script>
   <script>
+    let arr = [1, 2, 3];
+
+    let brr = arr.map(item => {
+      return `<div>${item}</div>`
+    }).join('')
+    console.log(brr, 'brr')
 
 
+    const btns = document.querySelector('.btns');
 
-    const btn = document.querySelector('.btns');
-    btn.onclick = () => {
+    btns.onclick = function () {
+          
+      console.log(new childDiolog({
+        title: '我是子函数的title',
+        btns: [
+          {
+            name: '确定'
+          }
+        ]
+      }))
+
       // new Dialog({
-      //   title: '你确定删除吗',
+      //   title: '你确定取消吗',
       //   btns: [
       //     {
       //       name: '确定'
       //     },
       //     {
-      //       name: '取消'
+      //       name: '确定'
       //     }
       //   ],
-      //   callback0: function (res) {
-      //     console.log('成功函数')
+      //   success: function (res) {
       //     location.href = 'http://www.baidu.com'
       //   },
-      //   callback1: function () {
-      //     console.log('失败函数')
-      //     location.href = 'http://39.105.187.138:3000'
+      //   error: function () {
+      //     location.href = 'http://39.105.187.138:3000/'
       //   }
       // })
-
-      console.log(new Child({
-        title: 'hello world',
-        btns: [
-          {
-            name: 'btns'
-          }
-        ]
-      }))
     }
+
+
 
 
 
