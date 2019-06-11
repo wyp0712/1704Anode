@@ -69,18 +69,13 @@
 
   <script src="./dialog.js"></script>
   <script>
-    let arr = [1, 2, 3];
-
-    let brr = arr.map(item => {
-      return `<div>${item}</div>`
-    }).join('')
-    console.log(brr, 'brr')
-
+    // let arr = [1, 2, 3];
+    // let brr = arr.map(item => {
+    //   return `<div>${item}</div>`
+    // }).join('')
 
     const btns = document.querySelector('.btns');
-
     btns.onclick = function () {
-          
       console.log(new childDiolog({
         title: '我是子函数的title',
         btns: [

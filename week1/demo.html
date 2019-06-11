@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>  
+
+
+  <script>
+    // div 0  div 1 div 2
+
+    const list = document.querySelectorAll('li');
+    
+    const Arrayfrom = (arr, callback = null) => {
+      arr = Array.prototype.slice.call(arr, this);
+      if ( callback ) {
+        return arr.reduce((prev, cur, index) => {
+          // console.log(cur, index)
+            prev.push(callback([cur, index]))
+            return prev;
+        }, [])
+      }
+      return arr;
+    }
+    console.log(Arrayfrom(list, function(res) {
+      console.log(res, 'res')
+    }))
+
+
+
+    
+
+    // function flatten(arr) {
+    //   arr = arr.flat(Infinity);
+    //   let index = 0;
+
+    //   return {
+    //     next: () => {
+    //       return {
+    //         value: arr[index++],
+    //         done: index > arr.length
+    //       }
+    //     }
+    //   }
+    // }
+    // const num = flatten([1, [2], [3, 4], 5])
+    // console.log(num.next())
+    // console.log(num.next())
+    // console.log(num.next())
+
+
+  </script>
+</body>
+
+</html>
