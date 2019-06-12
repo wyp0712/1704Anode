@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    
+    let n = 10;
+    //输入n,n为等腰三角形的行数
+    for (let i = 1; i <= n; i++) {
+      //外循环控制等腰三角形的行数
+      for (let j = n - 1; j >= i; j--) {
+        //打印等腰三角形每行前的空格数
+        document.write("&nbsp;");
+      }
+      for (let k = 1; k <= 2 * i - 1; k++) {
+        //输出等腰三角形
+        document.write("*");
+      }
+      document.write("<br />");
+      //换行
+    }
+
+  </script>
+</body>
+
+</html>
