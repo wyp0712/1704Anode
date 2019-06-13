@@ -1,9 +1,6 @@
 
 const colors = require('colors');
-
 console.log(`${__dirname} + '/src' `.bold.green)
-
-
 const noRepeat = (arr) => {
   return arr.reduce((prev, cur, index) => {
 

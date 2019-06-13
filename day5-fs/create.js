@@ -40,55 +40,9 @@ makeDir(config)
  * 3. 如果是文件 读文件 写文件
  * 
  * */
-// const copyDir = (src, dist) => {
-//   const stat = fs.statSync(src)
-//   if (stat.isDirectory()) {
 
-//   } 
-// }
-// copyDir('./src', './dist', copy)
-
-// function copy(src, dist) {
-
-// }
+ 
 
 
-// 读文件夹
-fs.readdir('./src', function(err, paths) {
-    
-    paths.forEach(item => {
-        const stat = fs.statSync('./src/'+ item) 
-
-        if(stat.isDirectory()) {
-     
-        } else {
-       
-        }
-    })
-})
-
-
-function copy(src, dist) {
-
-}
-
-
-
-
-
-
-
-
-
-
-// fs.readdir('./back', (err, paths) => {
-//   // console.log(err, paths)
-//   paths.forEach(item => {
-//     // console.log(fs.statSync('./back/'+ item))
-//     const stat = fs.statSync('./back/' + item)
-//     // console.log(stat, 'stat')
-//      console.log(stat.isDirectory())
-//   })
-// })
 
 

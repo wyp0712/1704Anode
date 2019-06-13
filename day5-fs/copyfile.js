@@ -55,4 +55,4 @@ var exists = function (src, dst, callback) {
 
 // 复制目录
 
-exists('./login', './haha', copy);
+exists('./back', './haha', copy);
