@@ -1,0 +1,71 @@
+#### fs
+nodejs 内置模块 require('fs')
+是操作文件的   文件.js    文件夹
+
+#### fs api
+操作文件 带后缀的
+读文件
+    path: 文件的路径   数据格式：默认buffer， 'utf-8', error 错误  con 读取的内容
+    fs.readFile(path, 数据格式, (error, con)=>{
+        // 读来做什么
+    })
+    fs.readFileSync(path, 数据格式)    返回值就是读取到的内容
+写文件
+    // 如果没有此路径，创建文件，如果有，覆盖
+    fs.writeFile(path, 内容, (err)=>{
+
+    })
+    fs.writeFileSync(path, 内容)
+
+# fs.copyFile('./app.js', './a.js', function(err, data) {})
+# fs.copyFileSync('./app.js', './b.js')
+
+追加
+    fs.appendFile(path, 内容, (err) => {
+
+    })
+    fs.appendFileSync(path, 内容)
+删文件
+    fs.unlink(path, (err) => {
+
+    })
+    fs.unlinkSync(path)
+
+
+文件夹
+创建文件夹
+    如果文件夹存在，报错  file  already exists
+       make directory
+    fs.mkdir(path, (err) => {
+
+    })
+    fs.mkdirSync(path)
+删文件夹 => 只能删除空文件夹
+       remove
+    fs.rmdir(path, (err)=>{
+
+    })
+    fs.rmdirSync(path)
+读文件夹 => 只读一级，只读自己的直接子元素  返回文件名组成的数组
+    fs.readdir(path,(err, con) => {
+        
+    })
+    let con = fs.readdirSync(path)
+
+判断是文件还是文件夹 文件和文件夹都支持
+    // 获取文件信息
+    fs.stat(path, (err, con) => {
+        con.isFile() // 判断是文件吗
+        con.isDirectory() // 判断是文件夹吗
+    })
+    let con = fs.statSync(path)
+    con.isFile() // 判断是文件吗
+    con.isDirectory() // 判断是文件夹吗
+判断文件是否存在 文件和文件夹都支持
+    let isExists = fs.existsSync(path)
+    
+
+
+fs.watch(路径, () => {
+    // 监听路径内容如果改变，做的事情
+})

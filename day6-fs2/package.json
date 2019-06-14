@@ -9,6 +9,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "colors": "^1.3.3"
+    "colors": "^1.3.3",
+    "express": "^4.17.1",
+    "vue": "^2.6.10",
+    "wyp-devin": "^1.0.7"
   }
 }

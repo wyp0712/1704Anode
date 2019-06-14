@@ -1,26 +1,31 @@
 /**
  * 读取大文件
  */
-
 const fs = require('fs')
-let rs = fs.createReadStream('./movie.wmv');
-let ws = fs.createWriteStream('./src/movie.wmv');
-rs.pipe(ws)
+const path = require('path');
+const color = require('colors');
 
-rs.on('data', (chunk) => {
-   // console.log(chunk)
-   // chunk 每一段小流  buffer
-   if (!ws.write(chunk)) {
-       rs.pause()
-   }
-   // console.log(ws.write(chunk))  // 返回是否写入完成
-})
+let rs = fs.createReadStream('./惊奇队长.mkv');
 
-ws.on('drain', () => {
-    console.log('写完一小段')
-    rs.resume()
-})
+// console.log(rs, 'rs')
+let ws = fs.createWriteStream('./aa.mkv');
 
-   rs.on('end', () => {
-       console.log(123)
+let srcFile = path.join(__dirname, './惊奇队长.mkv')
+let destFile = path.join(__dirname, './a.mkv')
+// console.log(srcFile, 'src')
+// console.log(destFile.red, 'destFile')
+console.time('amzing')
+
+fs.stat(srcFile, function(err, stat) {
+    const size = stat.size
+    let num = 0;
+   rs.on('data', function(buffer) {
+       num += buffer.length;
+       const percent = ( num / size  * 100 ).toFixed(2);
+       console.log(percent + '%');
    })
+   rs.on('end', function() {
+    console.timeEnd('amzing')
+   })
+})
+rs.pipe(ws)

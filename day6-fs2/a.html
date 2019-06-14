@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    .dialog {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .mask {
+      width: 100%;
+      height: 100%;
+      background: black;
+      opacity: .6;
+    }
+
+    .tip {
+      width: 50%;
+      height: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+    }
+
+    button {
+      width: 100px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+    }
+
+    button {
+      width: 100px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+
+  <button class="btns">点击出现蒙层</button>
+
+  <script src="./demo.js"></script>
+  <script>
+    // let arr = [1, 2, 3];
+    // let brr = arr.map(item => {
+    //   return `<div>${item}</div>`
+    // }).join('')
+
+    const btns = document.querySelector('.btns');
+    btns.onclick = function () {
+      console.log(new childDiolog({
+        title: '我是子函数的title',
+        btns: [
+          {
+            name: '确定'
+          }
+        ]
+      }))
+    }
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
