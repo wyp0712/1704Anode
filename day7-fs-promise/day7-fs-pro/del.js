@@ -32,27 +32,6 @@ function del(src) {
     })
     fs.rmdirSync(src)
 }
-//  del('./src')
 
-// function delFn(src) {
-//     if (!fs.existsSync(src)) {
-//         return;
-//     }
-//     let paths = fs.readdirSync(src)
-//     paths.forEach(item => {
-//         if (fs.statSync(path.join(src, item)).isFile()) {
-            
-//             fs.unlinkSync(path.join(src, item))
-//         } else {
-//             console.log(path.join(src, item), '----2')
-//             delFn(path.join(src, item))
-//         }
-//     })
-//     fs.rmdirSync(src)
-// }
-// delFn('./src')
-
-
-
-
+del('./src')
 

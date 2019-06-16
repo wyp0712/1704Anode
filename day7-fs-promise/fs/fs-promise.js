@@ -1,11 +1,29 @@
-let path=require('path');
+let path = require('path');
 
 let dirname = path.resolve();//存储的是当前模块执行所在的绝对路径
 const fs = require('fs');
 
-// fs.copyFile('./app.js', './a.js', function(err, data) {
+/**
+ * 
+ *  基于单个封装查找共同点，还有不同点
+ * 
+ *  fs.mkdir
+ *  fs.rmdir
+ *  fs.readdir
+ *  fs.readFile
+ *  fs.copyFile
+ *  fs.unlink
+ *  
+ *  
+ */
 
-// })
+// fs.copyFile('./app.js', './a.js',function(err, data) {})
+// const fsArr = ['mkdir', 'rmdir', 'readdir', 'readFile', 'copyFile', 'unlink'];
+
+
+
+
+// fs.copyFile('./app.js', './a.js', function(err, data) {// })
 
 // console.log(__dirname)
 // console.log(dirname, 'dirname')
@@ -26,48 +44,74 @@ const fs = require('fs');
 
 // (读取类)
 const fsArr = ['mkdir', 'rmdir', 'readdir', 'readFile', 'copyFile', 'unlink'];
+
 fsArr.forEach(item => {
-  exports[item] = function(pathname, copypath = '') {
-    pathname = path.resolve(__dirname, pathname);
-    copypath = path.resolve(__dirname, copypath);
+  // 循环抛出方法
+  module.exports[item] = function (pathname, copypath = '') {
+    //  pathname = path.resolve(__dirname, pathname);
+    //  copypath = path.resolve(__dirname, copypath);
     return new Promise((resolve, reject) => {
-      let arg = [ function(err, data){
+
+      let arg = [function (err, data) {
         if (err) {
-          reject(err);
+          reject(err)
           return;
         }
-        resolve(data || '');
-      } ]
-      item === 'readFile' ? arg.unshift('utf-8'): null;
-      item === 'copyFile' ? arg.unshift(copypath) : null;
-      console.log(arg, 'arg')
+        resolve(data || '')
+      }];
+
+      item === 'readFile' ? arg.unshift('utf-8') : null
+      item === 'copyFile' ? arg.unshift(copypath) : null
       fs[item](pathname, ...arg)
+
+      // fs[item](pathname,'data', function() {})
     })
   }
 })
 
+// fsArr.forEach(item => {
+//   exports[item] = function(pathname, copypath = '') {
+//     pathname = path.resolve(__dirname, pathname);
+//     copypath = path.resolve(__dirname, copypath);
+//     return new Promise((resolve, reject) => {
+//       let arg = [function(err, data){
+//         if (err) {
+//           reject(err);
+//           return;
+//         }
+//         resolve(data || '');
+//       }]
+//       item === 'readFile' ? arg.unshift('utf-8'): null;
+//       item === 'copyFile' ? arg.unshift(copypath) : null;
+//       console.log(arg, 'arg')
+//       fs[item](pathname, ...arg)
+//     })
+//   }
+// })
+
 
 // ['mkdir', 'rmdir', 'readdir', 'readFile', 'copyFile', 'unlink'].forEach(function (item){
-  // console.log(item, 'item-------1')
-    // exports[item] = function (pathname, copypath = '') {
-    //     pathname = path.resolve(dirname, pathname);
-    //     console.log(pathname)
-    //     copypath = path.resolve(dirname, copypath);
-    //     return new Promise(function (resolve, reject) {
-    //         let arg = [function (err, data) {
-    //             if (err) {
-    //                 reject(err);
-    //                 return;
-    //             }
-    //             resolve(data || '');
-    //         }];
-    //         item === 'readFile' ? arg.unshift('utf8') : null;
-    //         item === 'copyFile' ? arg.unshift(copypath) : null;
-    //         fs[item](pathname, ...arg)
-    //     })
-    // }
+// console.log(item, 'item-------1')
+// exports[item] = function (pathname, copypath = '') {
+//     pathname = path.resolve(dirname, pathname);
+//     console.log(pathname)
+//     copypath = path.resolve(dirname, copypath);
+//     return new Promise(function (resolve, reject) {
+//         let arg = [function (err, data) {
+//             if (err) {
+//                 reject(err);
+//                 return;
+//             }
+//             resolve(data || '');
+//         }];
+//         item === 'readFile' ? arg.unshift('utf8') : null;
+//         item === 'copyFile' ? arg.unshift(copypath) : null;
+//         fs[item](pathname, ...arg)
+//     })
+// }
 // });
-// //(写入类)
+
+//(写入类)
 // ['writeFile', 'appendFile'].forEach(function (item) {
 //     exports[item] = function (pathname, content) {
 //         pathname = path.resolve(dirname, pathname);
@@ -85,3 +129,7 @@ fsArr.forEach(item => {
 //         })
 //     }
 // })
+
+['writeFile', 'appendFile'].forEach((item) => {
+
+})

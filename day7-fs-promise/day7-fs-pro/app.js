@@ -1,6 +1,5 @@
-
 const fs = require('fs');
-const config = require('../back/config.json');
+const config = require('./config.json');
 // 根据config.json文件去创建文件和文件夹
 const makedir = (config) => {
   // 判断当前文件夹在不在 不在就创建

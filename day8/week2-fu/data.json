@@ -1,0 +1,36 @@
+{
+  "name": "src",
+  "type": "dir",
+  "children": [
+      {
+          "name": "js",
+          "type": "dir",
+          "children": [
+              {
+                  "name": "app",
+                  "type": "dir",
+                  "children": [
+                      {
+                          "name": "index.js",
+                          "type": "file"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "name": "css",
+          "type": "dir",
+          "children": [
+              {
+                  "name": "index.css",
+                  "type": "file"
+              }
+          ]
+      },
+      {
+          "name": "index.html",
+          "type": "file"
+      }
+  ]
+}
