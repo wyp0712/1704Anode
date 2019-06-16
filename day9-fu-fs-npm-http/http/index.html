@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://10.57.20.7:8000">
+        <input type="text" name="uname" class="uname">
+        <input type="text" name="upwd" class="upwd">
+        <!-- <input type="submit" value="提交" class="submit"> -->
+        <button>提交1</button>
+    </form>
+    <script>
+        document.querySelector('button').onclick = (e) => {
+            let uname = document.querySelector('.uname').value;
+            let upwd = document.querySelector('.upwd').value;
+            if(!uname || !upwd) {
+                e.preventDefault();
+            }
+        }
+        
+
+    </script>
+</body>
+</html>

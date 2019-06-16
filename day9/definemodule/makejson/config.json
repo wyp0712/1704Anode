@@ -1,0 +1,29 @@
+{
+    "dirname": "src",
+    "children": [
+        {
+            "dirname": "js",
+            "children": [
+                {
+                    "dirname": "app",
+                    "children": [
+                        {
+                            "filename": "index.js"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "dirname": "css",
+            "children": [
+                {
+                    "filename": "index.css"
+                }
+            ]
+        },
+        {
+            "filename": "index.html"
+        }
+    ]
+}
