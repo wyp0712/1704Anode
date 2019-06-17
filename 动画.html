@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>async以及promise的应用</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            transition: transform 0.5s ease 0s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <button id="w-btn">点击实现一个W的走位</button>
+    <button>点击实现一个z的走位</button>
+    <script>
+        var oBox = document.getElementById('box');
+        var aBtns = document.getElementsByTagName('button');
+        var globalReslove = null;
+        oBox.addEventListener('transitionend', () => { // 监听动画完成的事件
+
+        });
+        function move(x, y) {  // 自行封装一个返回promise的方法，x，y分别代表要移动的横向和纵向的距离
+            return new Promise((reslove, reject) => {
+                // 请补全相关的逻辑代码
+            })
+        }
+
+
+
+       //实现z走位
+
+
+    </script>
+</body>
+
+</html>

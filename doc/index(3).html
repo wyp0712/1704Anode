@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // setTimeout(() => {
+        //     console.log("n1")
+        // },500)
+        // setTimeout(() => {
+        //     console.log("n2")
+        // },100)
+        // setTimeout(() => {
+        //     console.log("n3")
+        // },200)
+
+         const steps = [
+            {
+                wait: 1,
+                output: 'task a cost 1s'
+            },
+            {
+                wait: 4,
+                output: 'task b cost 4s'
+            },
+            {
+                wait: 2,
+                output: 'task c cost 2s'
+            },
+            {
+                wait: 1,
+                output: 'task d cost 1s'
+            }
+        ];
+
+        function write(time,str){
+            return new Promise((resolve,reject) => {
+                setTimeout(() => {
+                    console.log(str)
+                    resolve();
+                },time*1000)
+            })
+        }
+
+        
+
+        async function fun() {
+            for(let i = 0;i<steps.length;i++){
+                await write(steps[i].wait,steps[i].output)
+            }
+        }
+
+        fun()
+
+
+
+        function getNum(){
+            return Math.floor(Math.random()*10)
+        }
+
+
+        function val(time){
+            return new Promise((resolve,reject) => {
+                setTimeout(() => {
+                    resolve(getNum())
+                },time)
+            })
+        }
+
+        async function sum(){
+            let num1 = await val(500)
+            let num2 = await val(200)
+            let num3 = await val(300)
+            console.log(num1,num2,num3)
+            return num1+num2+num3
+        }
+
+        sum().then((res) => {
+            console.log(res);
+        })
+
+
+ </script>
+</body>
+</html>

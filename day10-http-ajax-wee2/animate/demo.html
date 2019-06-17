@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 100%;
+    }
+
+    .header {
+      width: 100%;
+      height: 60px;
+      text-align: center;
+      background: red;
+    }
+
+    .main {
+      width: 100%;
+      height: 500px;
+      background: #eee;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .active {
+      position: absolute;
+      transition: all 1s;
+      left: 0;
+      top: 0;
+    }
+
+    .box {
+      width: 20%;
+      /* width: 50px; */
+      height: 81px;
+      border-radius: 50%;
+      background: lightcoral;
+      text-align: center;
+      line-height: 80px;
+      font-size: 40px;
+
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="wrap">
+    <header class="header">
+
+    </header>
+    <main class="main">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+      <div class="box" style="background:red;">7</div>
+      <div class="box">8</div>
+      <div class="box">9</div>
+      <div class="box">10</div>
+      <div class="box">11</div>
+      <div class="box">12</div>
+      <div class="box">13</div>
+      <div class="box" style="background:red;">14</div>
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+      <div class="box" style="background:red;">7</div>
+      <div class="box">8</div>
+      <div class="box">9</div>
+      <div class="box">10</div>
+      <div class="box">11</div>
+      <div class="box">12</div>
+      <div class="box">13</div>
+      <div class="box" style="background:red;">14</div>
+    </main>
+  </div>
+
+
+
+
+  <script>
+
+    const box = document.querySelectorAll('.box');
+    const main = document.querySelector('.main');
+
+    box.forEach((item, index) => {
+      item.onclick = function () {
+        console.log(index)
+        let dom = this.cloneNode()
+        dom.style.left = item.offsetLeft + 'px'
+        dom.style.top = item.offsetTop + 'px'
+        dom.style.position = 'absolute'
+        dom.innerHTML = index + 1
+        main.appendChild(dom)
+
+        setTimeout(function () {
+          dom.style.transition = 'all .5s'
+          dom.style.left = '0';
+          dom.style.top = '-60px';
+        }, 80)
+      }
+    })
+
+
+
+  </script>
+</body>
+
+</html>

@@ -19,23 +19,52 @@
     <!-- <input type="button" class="btn" value="提交按钮"> -->
   </form>
 
+  <div class="box">
+
+  </div>
+
 
 
   <script src="./node_modules/jquery/dist/jquery.js"></script>
+  <!-- <script src="./ajax/ajax.js"></script> -->
   <script>
-    const btn = document.querySelector('.btn');
-    btn.onclick = function(e) {
-      // e.preventDefault();
-      
-      //  $.ajax({
-      //    url: 'http://localhost:3000',
-      //    type:'get',
-      //    success: function(res) {
-      //      console.log(res)
-      //    }
-      //  })
-    }
-  
+    const box = document.querySelector('.box');
+    $.ajax({
+      url: 'http://39.105.187.138:3000/movie',
+      data: {
+        page:0,
+        size: 40
+      },
+      type: 'get',
+      success: function (res) {
+        console.log(res)
+        console.time('movie')
+        // let str = '';
+        // res.forEach(item => {
+        //    str += `<div>${item.title}</div>`
+        // })
+        // box.innerHTML = str;
+        box.innerHTML = res.map(item => {
+          return `<div>${item.title}</div>`
+        }).join('')
+        console.timeEnd('movie')
+      }
+    })
+
+
+
+    // const btn = document.querySelector('.btn');
+    // btn.onclick = function(e) {
+    //   e.preventDefault();
+    //    $.ajax({
+    //      url: 'http://39.105.187.138:3000/movie?page=0&size=5',
+    //      type:'get',
+    //      success: function(res) {
+    //        console.log(res)
+    //      }
+    //    })
+    // }
+
   </script>
 </body>
 

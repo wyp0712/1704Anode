@@ -17,13 +17,8 @@ const copy = (src, dist) => {
           //     console.log('success')
           //   })
           // })  
-
           // 如果有大文件的话 可以用这个更快 大文件
           fs.createReadStream(_src).pipe(fs.createWriteStream(_dist))
-          // let read = fs.createReadStream(_src);
-          // let write = fs.createWriteStream(_dist);
-          // read.pipe(write);
-
         } else if (stat.isDirectory()) {
           // 如果是文件夹，递归调用重新创建文件夹，拷贝文件
           exists(_src, _dist, copy)

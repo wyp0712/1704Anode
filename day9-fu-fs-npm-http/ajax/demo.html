@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script src="./ajax.js"></script>
+  <script>
+
+    ajax.get({
+      url: 'http://39.105.187.138:3000/movie?page=1&size=20',
+    }).then(res => {
+      console.log(res)
+    })
+
+    let data = {
+      name: 'devin',
+      age: 123
+    }
+    console.log(data, 'data')
+
+    //  console.log(Object.entries(data), '------1')
+
+    // let obj = Object.entries(data).map(item => {
+    //   return item[0] + '=' + item[1]
+    // }).join('&')
+
+    // console.log(obj, 'obj')
+
+
+
+
+  </script>
+</body>
+
+</html>

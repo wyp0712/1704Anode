@@ -85,11 +85,13 @@ http.createServer(function (req, res) {
 
 
   // if (req.url !== '/favicon.ico'){
-     
-
+    
   // }
-
   if (req.method === 'GET') {
+
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
+    // res.setHeader("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     console.log('req:',req.method)
     console.log(req.url)
   }
