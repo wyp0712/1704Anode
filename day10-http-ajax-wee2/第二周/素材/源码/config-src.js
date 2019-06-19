@@ -13,6 +13,7 @@ class Files {
     async writefile() {
         console.log("======")
         let html = await this.readfile(this.template);
+        
         for (let val of this.modules) {
             let text = await this.getFileText(val.type, val.files);
             html = html.replace(`<!--injection ${val.type}-->`, text)

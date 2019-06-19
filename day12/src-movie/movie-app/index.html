@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="static/style/index.css">
+
+  <title>Document</title>
+</head>
+<body>
+
+
+  <img src="static/img/icon2.png" alt="">
+  <h1>这是静态资源的主页</h1>
+
+  <input type="text" class="user"><br>
+  <input type="text" class="pwd"><br>
+  <button id="btn">登陆</button>
+
+  
+
+  <script src="static/js/myAjax.js"></script>
+  <script>
+     
+     const btn = document.querySelector('#btn');
+     const user = document.querySelector('.user');
+     const pwd = document.querySelector('.pwd');
+     btn.onclick = function() {
+      //  let user = user.value.trim()
+      //  let pwd = pwd.value.trim()
+       ajax.get({
+         url: '/movie',
+         data: {
+           page: 1,
+           size:5
+         }
+       }).then(res => {
+         console.log(res, 'res----1')
+       })
+     }
+
+  
+  </script>
+</body>
+</html>

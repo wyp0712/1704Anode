@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="static/style/index.css">
+  <title>Document</title>
+</head>
+<body>
+
+  
+  <img src="static/img/banner.jpg" alt="">
+  <input type="text"><br>
+  <input type="text"><br>
+  <button id="btn">提交</button>
+
+
+
+  <script src="./myAjax.js"></script>
+  <script>
+    const btn = document.querySelector('#btn');
+    btn.onclick = function () {
+      console.log(1)
+      ajax.get({
+        url: '/login',
+        data: {
+          user: 'devin',
+          pwd: 123
+        }
+      }).then(res => {
+        console.log(res, 'res')
+      })
+    }
+
+
+
+
+  </script>
+
+</body>
+
+</html>

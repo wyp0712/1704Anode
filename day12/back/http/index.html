@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1> hello world </h1>
+
+  <input type="text"><br>
+  <input type="text"><br>
+  <button id="btn">提交</button>
+
+  <!-- <img src="../../img/banner.jpg" alt=""> -->
+
+  <script src="./myAjax.js"></script>
+  <script>
+
+    btn.onclick = function () {
+      ajax.post({
+        url: '/login'
+      }).then(res => {
+        console.log(res, 'res')
+      })
+    }
+
+
+
+  </script>
+</body>
+
+</html>
