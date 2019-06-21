@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <script src="./node_modules/axios/dist/axios.js"></script>
+  <script>
+
+    axios({
+      url: 'http://39.105.187.138:3000/movie?page=1&size=1',
+      method: 'get',
+      proxy: {
+        host: '127.0.0.1',
+        port: 8000
+      }
+    }).then(res => {
+      console.log(res.data, 'res')
+    })
+
+
+    axios.get('http://39.105.187.138:3000/movie', {
+      params: {
+        page: 1,
+        size: 1
+      }
+    }).then(list => {
+      console.log(list.data, 'list')
+    })
+
+  </script>
+</body>
+
+</html>

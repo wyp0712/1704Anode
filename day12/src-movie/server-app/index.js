@@ -83,7 +83,6 @@ function processRequest(req, res) {
           res.end(fs.readFileSync(filePath))
       }
     } else if (method === 'POST') {
-
       getPostData(req).then(postData => {
         // 登陆接口  验证 
         switch (pathname) {
@@ -137,8 +136,8 @@ function processRequest(req, res) {
     res.writeHead(200, { 'Content-type': contentType })
     let stream = fs.createReadStream(readepath)
     stream.on('error', function () {
-      res.writeHead(500, { "content-type": contentType });
-      res.end("<h1> 500 Server Error</h1>");
+      res.writeHead(404, { "content-type": `${contentType};charset=utf-8`});
+      res.end("<h1> 404 找不到页面</h1>");
     });
     stream.pipe(res)
   }

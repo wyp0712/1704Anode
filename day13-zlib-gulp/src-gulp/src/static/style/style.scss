@@ -1,0 +1,17 @@
+.box {
+  width: 100px;
+  p {
+    width:200px;
+    a{
+      color:red;
+      span {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+span {
+  color:red
+}

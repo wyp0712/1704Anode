@@ -1,0 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  width: 100px;
+  p {
+    width: 20px;
+    span {
+      color: red;
+    }
+  }
+}
