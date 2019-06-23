@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    
-  
+
+
   </style>
 </head>
+
 <body>
-   
+  <h1 style="color:blueviolet">我是登陆页面</h1>
   <div class="wrap">
-    <input type="text"><br>
-    <input type="text"><br>
+    <input type="text" class="user"><br>
+    <input type="text" class="pwd"><br>
     <button class="btn">提交</button>
   </div>
 
   <script src="js/myAjax.js"></script>
   <script>
-  
-  
+
+    const user = document.querySelector('.user')
+    const pwd = document.querySelector('.pwd')
+    const btn = document.querySelector('.btn')
+
+    function postFn() {
+      ajax.post({
+        url: '/login',
+        data: {
+          user: user.value.trim(),
+          pwd: pwd.value.trim()
+        }
+      }).then(res => {
+        if (res.code === 0) {
+          // location.href = './product.html'
+        } else {
+          // location.href = './register.html'
+        }
+      })
+    }
+
+    btn.onclick = function () {
+       if (user.value && pwd.value) {
+         postFn()
+       }
+    }
+
+
   </script>
 
 </body>
+
 </html>

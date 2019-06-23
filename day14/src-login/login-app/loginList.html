@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      user-select: none;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    .wrap {
+      width: 750px;
+      height: 600px;
+      border: 1px solid black;
+      padding: 20px;
+      margin: 0 auto;
+    }
+
+    ul {
+      width: 100%;
+    }
+
+    li {
+      width: 100%;
+      height: 45px;
+      text-align: center;
+      display: flex;
+
+      border-bottom: 1px solid #ccc;
+    }
+
+    li span {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .title {}
+
+    .title li {
+      /* border:none; */
+    }
+
+    .listCon {
+      height: 465px;
+      overflow: hidden;
+    }
+
+    .slide-page {
+      width: 100%;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .slide-page span {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background: #eee;
+    }
+
+    .remove-active {
+      color: red;
+    }
+
+    .dialog {
+      width: 100%;
+      height: 100%;
+      background: black;
+      opacity: .6;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+    <ul class="title">
+      <li><span>账户名</span> <span>密码</span> </li>
+    </ul>
+    <input type="text" class="content">
+    <ul class="listCon">
+
+    </ul>
+
+    <div class="slide-page">
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+    </div>
+  </div>
+  <!-- 
+  <div class="dialog">
+
+  </div> -->
+
+
+
+  <script src="js/myAjax.js"></script>
+  <script>
+    const listCon = document.querySelector('.listCon');
+    const btns = document.querySelectorAll('.slide-page span')
+    const con = document.querySelector('.content')
+
+
+    listCon.addEventListener('click', function (e) {
+      if (e.target.nodeName === 'SPAN') {
+        console.log(e.target.dataset.index)
+        let dialogDom = document.createElement('div');
+        dialogDom.className = 'dialog';
+        document.body.appendChild(dialogDom)
+
+        ajax.post({
+          url: '/del',
+          data: {
+            id: e.target.dataset.index
+          }
+        }).then(list => {
+          console.log(list, 'res')
+          setTimeout(() => {
+            render(list)
+            let dom = document.querySelector('.dialog')
+            document.body.removeChild(dom)
+          }, 2000)
+
+        })
+      } 
+ 
+      if (e.target.nodeName === 'A') {
+        console.log(e.target.dataset.index)
+        
+        ajax.post({
+          url: '/update',
+          data: {
+            id: e.target.dataset.index,
+            content: con.value.trim()
+          }
+        }).then(list => {
+          render(list)
+        })
+      }
+    })
+
+    getPageData()
+    function getPageData(page = 0, size = 10) {
+      ajax.get({
+        url: "/admin",
+        data: {
+          page: page,
+          size: size
+        }
+      }).then(list => {
+        render(list)
+      })
+    }
+
+    function render(list) {
+      list = list.data
+      listCon.innerHTML = list.map(item => {  
+        return `<li><span>${item.user}</span><span data-index=${item.id}>删除</span> <a data-index=${item.id}>更新</a> </li>`
+      }).join("");
+    }
+
+    btns.forEach((item, index) => {
+      item.onclick = function () {
+        getPageData(index)
+      }
+    })
+
+
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1 style="color: red;">亲，信息找不到，请留下你宝贵的信息</h1>
+  <div class="wrap">
+      <input type="text" class="user"><br>
+      <input type="text" class="pwd"><br>
+      <button class="btn">提交</button>
+    </div>
+  
+    <script src="js/myAjax.js"></script>
+    <script>
+     
+      const user = document.querySelector('.user')
+      const pwd = document.querySelector('.pwd')
+      const btn = document.querySelector('.btn')
+      btn.onclick = function() {
+        ajax.post({
+          url: '/register',
+          data: {
+            user: user.value.trim(),
+            pwd: pwd.value.trim()
+          }
+        }).then(res => {
+          if (res.code === 0) {
+            alert('注册成功，可以登陆了')
+            location.href = './index.html'
+          } else {
+            alert('当前信息已经被注册，请重新输入')
+            location.href = './register.html'
+          }
+        })
+      }
+
+  </script>
+
+
+</body>
+
+</html>
