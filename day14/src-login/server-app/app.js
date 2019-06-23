@@ -24,6 +24,7 @@ const MIME = {
   'png': 'img/png'
 }
 
+console.log('hello world')
 function processRequest(req, res) {
 
   const urlPath = req.url;// 请求地址
