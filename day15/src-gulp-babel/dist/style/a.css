@@ -1,0 +1,6 @@
+.box {
+  width: 100px; }
+  .box p {
+    color: red; }
+    .box p span {
+      display: inline-block; }

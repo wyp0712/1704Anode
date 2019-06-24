@@ -1,11 +1,10 @@
-const fs = require('fs');;
-const path = require('path')
+const fs = require('fs');
+const path = require('path');
 const url = require('url');
-const querystring = require('querystring')
+const querystring = require('querystring');
 
-const { SuccessModel, FailModel } = require('../model/resModel')
-
-const { readfileFn } = require('../util/util')
+const { SuccessModel, FailModel } = require('../model/resModel');
+const { readfileFn } = require('../util/util');
 
 const handleAdminRouter = (req, res) => {
 
@@ -110,9 +109,8 @@ const handleAdminRouter = (req, res) => {
           }
         })
       }
-      
-      return citylist || new FailModel('参数有误')
 
+      return citylist || new FailModel('参数有误')
     })
 
   }

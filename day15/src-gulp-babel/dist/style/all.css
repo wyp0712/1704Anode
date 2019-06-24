@@ -1,0 +1,27 @@
+.box {
+  width: 100px; }
+  .box p {
+    color: red; }
+    .box p span {
+      display: inline-block; }
+
+.box {
+  width: 100px; }
+  .box p {
+    color: red; }
+    .box p span {
+      display: inline-block; }
+
+.b-box {
+  width: 100px; }
+  .b-box .b-p {
+    color: red; }
+    .b-box .b-p .span {
+      display: inline-block; }
+
+.b-box {
+  width: 100px; }
+  .b-box .b-p {
+    color: red; }
+    .b-box .b-p .span {
+      display: inline-block; }

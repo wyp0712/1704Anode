@@ -1,1 +1,1 @@
-"use strict";function auto(){return 1}auto();var a=function(){return 2};a();
+"use strict"; var _a = _interopRequireDefault(require("a")); function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e } } function auto() { return 1 } auto(); var a = function () { return 2 }; a();

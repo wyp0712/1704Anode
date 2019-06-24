@@ -1,0 +1,9 @@
+{
+  "presets": ["env"],
+  "ignore":["foo.js"], // 忽略哪个文件
+  "minified":true,   // 压缩
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ]
+}

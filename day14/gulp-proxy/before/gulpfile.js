@@ -13,3 +13,24 @@ gulp.task('server', () => {
         ]
     }))
 })
+
+/**
+ * 
+ *   ajax({
+ *     "url": '/api/checkcode'
+ *    })
+ *   "url": '/api/get'
+ *   "url": '/api/post'
+ *   "url": '/api/checkcode'
+ * 
+ *  后端  java http://localhost:5000/
+ * 
+ *   代码 ngix node proxies： {
+ *        source: '/api'
+ *        target: 'http://localhost:5000/'
+ *      }
+ * 
+ *  前端  node服务 框架 http://localhost:8000/
+ * 
+ * 
+ */

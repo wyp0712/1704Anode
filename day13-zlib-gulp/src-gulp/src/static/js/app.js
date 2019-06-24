@@ -9,5 +9,6 @@ const a = () => {
 }
 a()
 
+import c from 'a';
 
 

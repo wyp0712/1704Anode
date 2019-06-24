@@ -85,8 +85,8 @@ gulp.task('webserver', () => {
           source: '/api', target: 'http://127.0.0.1:8000'
         }
       ],
-      filter: function() {
-        
+      filter: function () {
+
       },
       //对请求进行拦截
       middleware: function (req, res, next) {

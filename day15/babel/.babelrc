@@ -1,0 +1,16 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"],
+        "node": "current"
+      }
+    }]
+  ],
+  "ignore":["foo.js"], // 忽略某些文件,默认值为null，
+  "minified": true,     // 是否压缩转译后的代码，默认值为false
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ]
+}
