@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      outline: none
+    }
+
+    .box {
+      padding: 60px;
+      width: 80%;
+      border: 1px solid #ccc;
+      margin: 0 auto;
+      position: relative;
+
+    }
+
+    .item {
+      width: 100%;
+      height: 40px;
+      text-align: center;
+      line-height: 50px;
+      /* display: flex;
+      align-items: center;
+      justify-content: flex-start; */
+      text-align: left;
+    }
+
+    .item span {
+      flex: 1;
+      text-indent: 2em;
+      text-align: right;
+    }
+
+    .item input {
+      height: 60%;
+    }
+
+    .title {
+      width: 100%;
+      line-height: 50px;
+    }
+    .title input {
+      height: 30px;
+    }
+
+    .btn {
+      width: 150px;
+      height: 100px;
+      font-size: 30px;
+      /* border:1px solid #ccc; */
+      margin: 30px;
+      position: absolute;
+      right: 10%;
+      bottom: 10%;
+    }
+    input {
+      border:1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <ul class="box">
+    <div class="title">
+      考生姓名：<input type="text" class="student"> 考生理论得分：<input type="text" class="lilun">
+    </div>
+
+    <hr>
+    <li class="item" style="margin-top:30px;">
+      <span class="content"> 1.代码规范代码规范: </span><input type="text" class="score">
+    </li>
+    <li class="item">
+      <span class="content"> 2.弹出框逻辑弹出框逻辑: </span><input type="text" class="score">
+    </li>
+    <li class="item">
+      <span class="content"> 3.注释弹出框逻辑: </span><input type="text" class="score">
+    </li>
+    <li class="item">
+      <span class="content"> 4.热水弹出框逻辑: </span> <input type="text" class="score">
+    </li>
+    <li class="item">
+      <span class="content"> 5.热水弹出框逻辑弹出框逻辑: </span> <input type="text" class="score">
+    </li>
+    <li class="item">
+      <span class="content"> 6.热水弹出框逻辑弹出框逻辑: </span> <input type="text" class="score">
+    </li>
+    <li class="item">
+      <span class="content"> 7.热水弹出框逻辑弹出框逻辑: </span> <input type="text" class="score">
+    </li>
+    <button class="btn">提交</button>
+  </ul>
+  <script src="./axios.js"></script>
+  <script>
+
+    const item = document.querySelectorAll('.item')
+    const btn = document.querySelector('.btn')
+    const score = [...document.querySelectorAll('.score')]
+    const student = document.querySelector('.student')
+    const lilun = document.querySelector('.lilun')
+    btn.onclick = function () {
+      let count = 0;
+      let list = score.map(item => {
+        count += item.value * 1;
+        if (item.value) {
+          return `${item.previousElementSibling.innerText + '-' + item.value.trim()}; `
+        }
+      }).join('')
+      if (student.value) {
+        list = student.value.trim() + ':  ' + list + `技能得分: ${100 - count}` + ` 理论得分: ${lilun.value.trim()}` + '\n'
+        if (list) {
+          axios.get('/exam',
+            {
+              params: {
+                data: list
+              }
+            }
+          ).then(res => {
+            console.log(res)
+          })
+        }
+      } else {
+        alert('请输入考生姓名')
+      }
+    }
+
+
+
+  </script>
+
+
+</body>
+
+</html>

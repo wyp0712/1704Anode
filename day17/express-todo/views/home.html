@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <!-- <h2> <%= msg%> </h2> -->
+
+
+  <button class="login">登陆</button>
+  <hr>
+  <button class="register">注册</button>
+  <hr>
+  <button class="startUse">开始使用</button>
+
+  <img src='/public/img/banner.jpg' alt="">
+
+
+
+
+
+  <script src="/public/js/myAjax.js"></script>
+
+  <script>
+
+    const loinbtn = document.querySelector('.login')
+    const register = document.querySelector('.register')
+    const startUse = document.querySelector('.startUse')
+    const strage = window.localStorage;
+
+    // 前端跳页面是跳转路由 而不是页面
+    loinbtn.onclick = function () {
+      location.href = '/loginRegister?page=login'
+    }
+    register.onclick = function () {
+      location.href = '/loginRegister?page=register'
+    }
+    startUse.onclick = function () {
+      if (strage.loginMsg) {
+        location.href = '/todo'
+      } else {
+        location.href = '/loginRegister?page=login'
+      }
+    }
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>

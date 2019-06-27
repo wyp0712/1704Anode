@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="public/css/index.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <h2>我是todopage</h2>
+
+  更新：<input type="text" class="updateMovie"> 
+  <br>
+  搜索： <input type="text" class="filterMsg">
+  <ul class="title">
+    <li> <%= title%> </li>
+
+  </ul>
+  <ul class="box">
+    <%  movieArr.forEach((item,index) => { %>
+    <li>
+      <div class="left"> <%= item.nm%> </div>
+      <div class="right">
+        <span class="updateBtn" data-id=<%= item.id %>> 更新</span>
+        <span class="removeBtn" data-id=<%= item.id %>> 删除</span>
+        <span class="addBtn" data-id=<%= item.id %>> 添加</span>
+      </div>
+    </li>
+    <% }) %>
+  </ul>
+
+
+
+  <script src="/public/js/myAjax.js"></script>
+  <script>
+
+    const updateBtn = document.querySelector('.updateBtn')
+    const removeBtn = document.querySelector('.removeBtn')
+    const addBtn = document.querySelector('.addBtn')
+    const filterMsg = document.querySelector('.filterMsg')
+    const box = document.querySelector('.box')
+    const updateMovie = document.querySelector('.updateMovie')
+    
+    filterMsg.oninput = function () {
+      let vals = this.value.trim()
+      ajax.get({
+        url: '/filterMovie',
+        data: {
+          keymovie: vals
+        }
+      }).then(res => {
+        // console.log(res, 'res')
+        render(res.data)
+      })
+    }
+    // 渲染函数
+    function render(list) {
+      box.innerHTML = list.map((item, index) => {
+        return `<li> <div class=left> ${item.nm} </div>  <div class=right>
+         <span class="updateBtn" data-id=${item.id}>更新</span>
+         <span class="removeBtn" data-id=${item.id}>删除</span>
+         <span class="addBtn" data-id=${item.id}>添加</span>
+        </div> </li>`
+      }).join("")
+    }
+
+    box.onclick = function (e) {
+      if (e.target.innerText === '删除') {
+        console.log(e.target.dataset.id, 'this.dataset.id')
+        let thisID = e.target.dataset.id
+        ajax.get({
+          url: '/removeMovie',
+          data: {
+            id: thisID
+          }
+        }).then(res => {
+          render(res.data)
+        })
+      } else if (e.target.innerText === '更新') {
+        let thisName = updateMovie.value.trim()
+        let thisId = e.target.dataset.id
+        ajax.get({
+          url: '/updateMovie',
+          data: {
+            id: thisId,
+            name: thisName
+          }
+        }).then(res => {
+          console.log(res.data, 'data')
+          render(res.data)
+        })
+      }
+    }
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>

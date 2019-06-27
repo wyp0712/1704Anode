@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <ul>
+    <input type="text" class="student">
+    <li class="item">
+      <div class="content">1. 代码规范</div><input type="text" class="score">
+    </li>
+    <li class="item">
+      <div class="content">2. 弹出框逻辑</div><input type="text" class="score">
+    </li>
+    <li class="item">
+      <div class="content">3. 注释</div><input type="text" class="score">
+    </li>
+    <li class="item">
+      <div class="content">4. 热水</div><input type="text" class="score">
+    </li>
+    <li class="item">
+      <div class="content">5. 热水</div><input type="text" class="score">
+    </li>
+    <li class="item">
+      <div class="content">6. 热水</div><input type="text" class="score">
+    </li>
+    <li class="item">
+      <div class="content">7. 热水</div><input type="text" class="score">
+    </li>
+  </ul>
+
+  <button class="btn">提交</button>
+
+
+
+  <script src="./axios.js"></script>
+  <script>
+
+    const item = document.querySelectorAll('.item')
+    const btn = document.querySelector('.btn')
+    const score = [...document.querySelectorAll('.score')]
+    const student = document.querySelector('.student')
+    btn.onclick = function () {
+      let count = 0;
+      let list = score.map(item => {
+        count += item.value * 1
+        if (item.value) {
+          return `${item.previousSibling.innerText + '-' + item.value.trim()};`
+        }
+      }).join('')
+      list = student.value.trim() + ':  ' + list + `  该学生总分：${100 - count}` + '\n'
+      if (list) {
+        axios.get('http://localhost:3000/exam',
+          {
+            params: {
+              data: list
+            }
+          }
+        ).then(res => {
+          console.log(res)
+        })
+      }
+    }
+
+
+
+  </script>
+
+
+</body>
+
+</html>

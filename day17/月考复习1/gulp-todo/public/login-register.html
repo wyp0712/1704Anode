@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .hide {
+      display: none
+    }
+
+    .show {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="login-box hide">
+    账户： <input type="text" class="loginUser"><br>
+    密码： <input type="text" class="loginPwd"><br>
+    <button class="loginbtn">登陆</button>
+  </div>
+
+  <div class="register-box hide">
+    账户：<input type="text" class="registerUser"><br>
+    密码：<input type="text" class="registerPwd"><br>
+    确认密码：<input type="text" class="repwd"><br>
+    <button class="registerBtn">注册</button>
+  </div>
+
+  <script src="/js/myAjax.js"></script>
+  <script>
+
+    const loginBox = document.querySelector('.login-box')
+    const registerBox = document.querySelector('.register-box')
+    const loginbtn = document.querySelector('.loginbtn')
+    const loginUser = document.querySelector('.loginUser')
+    const loginPwd = document.querySelector('.loginPwd')
+    const registerUser = document.querySelector('.registerUser')
+    const registerPwd = document.querySelector('.registerPwd')
+    const registerBtn = document.querySelector('.registerBtn')
+
+    const strage = window.localStorage;
+    let pageStatus = location.search.replace(/\?\w+\=/, '')
+    console.log(pageStatus, 'pageStatus')
+    if (pageStatus == 'login') {
+      registerBox.classList.remove('show')
+      loginBox.classList.add('show')
+    } else {
+      registerBox.classList.add('show')
+      loginBox.classList.remove('show')
+    }
+
+    loginbtn.onclick = function () {
+
+      ajax.post({
+        url: "/login",
+        data: {
+          user: loginUser.value.trim(),
+          pwd: loginPwd.value.trim()
+        }
+      }).then(loginRes => {
+        console.log(loginRes, 'loginRes')
+        if (loginRes.code === -1) {
+          alert('请重新输入')
+        } else {
+          strage.setItem('loginMsg', JSON.stringify({
+            user: loginUser.value.trim(),
+            pwd: loginPwd.value.trim()
+          }))
+          location.href='/todo'
+        }
+      })
+    }
+
+
+    registerBtn.onclick = function() {
+      //  let reg = /^\w+\@\.com&/
+      //  if (reg.test(val)) {
+
+      //  }
+       ajax.post({
+         url: '/register',
+         data: {
+          user: registerUser.value.trim(),
+          pwd: registerPwd.value.trim()
+         }
+       }).then(res => {
+         console.log(res, 'res')
+       })
+    }
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+</body>
+
+</html>
