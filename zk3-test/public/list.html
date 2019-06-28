@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list"></ul>
+    <script src="js/axios.min.js"></script>
+    <script>
+        axios.get('/api/list').then(res => {
+            console.log(res)
+            if(res.data.code === 1){
+                render(res.data.data);
+            }
+        })
+
+        let list = document.querySelector('#list')
+        function render(data){
+            list.innerHTML = data.map(item => `<li>${item.username} <button data-name="${item.username}">删除</button></li>`).join('')
+        }
+
+        //删除
+        list.addEventListener('click',(e) => {
+            if(e.target.tagName === 'BUTTON'){
+                let name = e.target.getAttribute('data-name');
+                console.log(name);
+                axios.get(`/api/del?name=${name}`).then(res => {
+                    console.log(res)
+                    if(res.data.code === 1){
+                        list.removeChild(e.target.parentNode)
+                    }
+                })
+            }
+        },false)
+
+    </script>
+</body>
+</html>

@@ -1,3 +1,6 @@
+
+console.log('fdsakfaks;)
+
 1. ejs 模版引擎使用方法转为html使用方法
 
 var ejs = require('ejs');

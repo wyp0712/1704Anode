@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .show-name,#sub{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        首页
+        <a href="./login.html" id="sub">登录</a>
+        <span class="show-name"> 用户名：</span>
+    </div>
+    
+    <script>
+        let username = localStorage.getItem('username') ||'';
+
+        let sub = document.querySelector('#sub');
+
+        let showName = document.querySelector('.show-name');
+
+        if(username){
+            sub.style.display="none";
+            showName.innerHTML += username;
+            showName.style.display ="block";
+        }else{
+            sub.style.display="block";
+            showName.style.display ="none";
+        }
+    </script>
+</body>
+</html>
