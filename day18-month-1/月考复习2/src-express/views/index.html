@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1>我是indexpage</h1>
+
+  <ul class="box">
+    <li></li>
+  </ul>
+
+
+  <script src="/public/js/myAjax.js"></script>
+  <script>
+
+    const box = document.querySelector('.box')
+
+    getData()
+    function getData(page = 0, size = 10) {
+      ajax.get({
+        url: '/getProduct',
+        data: {
+          page: page,
+          size: size
+        }
+      }).then(res => {
+        let list = res.list
+        box.innerHTML = list.map(item => {
+          return `<li>${item.nm}</li>`
+        }).join('')
+      })
+    }
+
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

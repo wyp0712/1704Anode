@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>APP</h1>
+
+  <select class="pro">
+    <option value=""></option>
+  </select>
+
+  <select class="city">
+    <option value=""></option>
+  </select>
+
+
+  <script src="./js/myAjax.js"></script>
+  <script>
+    const pro = document.querySelector('.pro')
+    const city = document.querySelector('.city')
+
+    // yiji 
+    ajax.get({
+      url: '/provice'
+    }).then(list => {
+      pro.innerHTML = list.map(item => {
+        return `<option value=${item}> ${item} </option>`
+      }).join('')
+      pro.onchange = function () {
+        getCity(this.value)
+      }
+    })
+
+
+    function getCity(pro) {
+      ajax.get({
+        url: '/city',
+        data: {
+          provice: pro
+        }
+      }).then(list => {
+        console.log(list.data[0].city)
+        city.innerHTML = list.data[0].city.map(item => {
+          return `<option value=${item}> ${item} </option>`
+        })
+      })
+    }
+
+  </script>
+</body>
+
+</html>

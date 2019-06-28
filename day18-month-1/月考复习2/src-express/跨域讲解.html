@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script src="./src-express/public/js/myAjax.js"></script>
+  <script>
+     
+     ajax.get({
+       url: 'http://localhost:3000/list',
+       data: {
+         page: 0,
+         size:5
+       }
+     }).then(res => {
+       console.log(res, 'res')
+     })
+
+  
+  </script>
+</body>
+</html>

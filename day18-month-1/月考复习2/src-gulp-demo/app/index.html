@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>APP</h1>
+    
+  <select class="pro">
+    <option value=""></option>
+  </select>
+
+  <select class="city">
+    <option value=""></option>
+  </select>
+
+
+  <script src="./js/myAjax.js"></script>
+  <script>
+    const pro = document.querySelector('.pro')
+    const city = document.querySelector('.city')
+
+    // yiji 
+    ajax.get({
+      url: '/provice'
+    }).then(list => {
+      pro.innerHTML = list.map(item => {
+        return `<option value=${item}> ${item} </option>`
+      }).join('')
+    })
+
+
+    // ajax.get({
+    //   url: '/city',
+    //   data: {
+    //     provice: '山西省'
+    //   }
+    // }).then(list => {
+    //   pro.innerHTML = list.map(item => {
+    //     return `<option value=${item}> ${item} </option>`
+    //   }).join('')
+    // })
+
+
+  
+  
+  </script>
+</body>
+</html>

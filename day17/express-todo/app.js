@@ -14,7 +14,9 @@ app.use(bodyParser.json()) // 解析json
 // var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.urlencoded({ extended: false }))
 // 第一个参数 文件夹指向  第二个参数  用什么读静态文件
+
 app.use('/public', express.static(path.join(__dirname, '/public')))
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'html')
 app.engine('html', ejs.renderFile)
