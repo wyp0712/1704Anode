@@ -37,7 +37,7 @@ gulp.task('js', () => {
 
 /**
  * 
- *     .pipe(babel({ // 使用gulp-babel 这个包es6=>es5
+ *    .pipe(babel({ // 使用gulp-babel 这个包es6=>es5
       presets: ['@babel/env']
     }))
  *  */
@@ -49,27 +49,25 @@ gulp.task('html', () => {
     .pipe(gulp.dest('./dist'))
 })
 
-
 gulp.task('webserver', () => {
   gulp.src('app')
   .pipe(webserver({
-    port: '8000',
+    port: 8000,
     livereload: true,
     // open:true
     middleware: [
       bodyParser.json(),
       bodyParser.urlencoded({ extended:false }),
       (req, res, next) => {
-
-
         const method = req.method;
         req.query = querystring.parse(decodeURI(req.url).split('?')[1])// 解析get参数
         let pathname = url.parse(req.url).pathname // 请求地址
-
         // 接口
-        if (method === 'GET' && pathname === '/provice') {
+        if (method === 'GET' && pathname === '/province') {
+
           res.writeHead(200, {'Content-Type': 'application/json'})
-          let { provice } = req.query
+
+          let { province } = req.query
           let pro = []
           return readfile(path.join(__dirname, 'mock/stroe.json')).then(store => {
             let list = JSON.parse(store)
@@ -82,11 +80,11 @@ gulp.task('webserver', () => {
 
         if(method === 'GET' && pathname === '/city') {
           res.writeHead(200, {'Content-Type': 'application/json'})
-          let { provice } = req.query;
+          let { province } = req.query;
           return readfile(path.join(__dirname, 'mock/stroe.json')).then(store => {
             let list = JSON.parse(store)
             let data = list.filter(item => {
-              if (item.name === provice) {
+              if (item.name === province) {
                 return item.city
               }
             })
@@ -96,6 +94,29 @@ gulp.task('webserver', () => {
             }))
           })
         }
+
+        if(method === 'GET' && pathname === '/county') {
+          let { province, city } = req.query;
+          console.log(province, city)
+          return readfile(path.join(__dirname, 'mock/stroe.json')).then(store => {
+            let list = JSON.parse(store)
+            let data = null;
+            list.map(item => {
+              if (item.name === province) {
+                data = item.city.filter(val => {
+                   if(val.name === city) {
+                       console.log(val.county, 'county')
+                   }
+                })
+              }
+            })
+            res.end(JSON.stringify({
+              code:0
+            }))
+          })
+        }
+
+
 
         next()
       }
