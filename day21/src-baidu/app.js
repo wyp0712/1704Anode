@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 
 // 引入路由文件
 const indexRouter = require('./router/index')
+const userRouter = require('./router/user')
 
 const app = express(); // 
 // 加载静态资源
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // 注册路由
 app.use('/', indexRouter)
+app.use('/user', userRouter)
 
 
 // 错误处理
@@ -24,7 +26,7 @@ app.use((req, res, next) => {
 })
 // 渲染404页面
 app.use((err, req, res, next) => {
-  console.log(err.message)
+  // console.log(err.message)
   res.sendFile(path.join(__dirname, './views/error.html'))
 })
 

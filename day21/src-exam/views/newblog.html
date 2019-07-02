@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>新建博客页面</title>
+</head>
+
+<body>
+
+
+  <h1>新建博客页面</h1>
+
+  用户名： <span class="userName" style="color: red"> </span>
+
+  <hr>
+
+  <button class="back">退出登陆状态</button>
+  <hr>
+ 
+  <!-- id:<input type="text" class="idCard"><br> -->
+  title : <input type="text" class="title"><br>
+  content: <input type="text" class="content"><br>
+  <!-- author: <input type="text" class="author"> <br> -->
+  <button id="btn">新建博客</button>
+
+
+  <script src="/public/js/myAjax.js"></script>
+  <script>
+
+    const stroage = window.localStorage;
+    const userName = document.querySelector('.userName')
+    const back = document.querySelector('.back')
+
+    const idCard = document.querySelector('.idCard')
+    const title = document.querySelector('.title')
+    const content = document.querySelector('.content')
+    const author = document.querySelector('.author')
+
+    const btn = document.querySelector('#btn')
+
+    btn.onclick = function() {
+       let options = {
+        //  id: idCard.value.trim(),
+         title: title.value.trim(),
+         content: content.value.trim(),
+         author:  JSON.parse(stroage.userMsg).user
+       }
+
+      ajax.post({
+        url: '/newBlog',
+        data: options
+      }).then(res => {
+        if (res.code ===0) {
+          alert('创建成功')
+          // 成功之后跳转页面 到list页面
+          window.location.href = '/'
+        }
+      })
+    }
+     
+    back.onclick = function() {
+      stroage.clear()
+      window.location = '/' 
+    }
+
+    if(stroage.userMsg) {
+     let username =  JSON.parse(stroage.userMsg).user
+     userName.innerHTML = username
+    }
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

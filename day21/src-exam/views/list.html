@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>博客列表页面</title>
+  <style>
+   *{
+     text-decoration: none;
+  }
+  </style>
+</head>
+
+<body>
+
+  <h1>博客列表页面 <button class="newBtn">新建博客</button>  </h1>   
+
+  <ul class="ul">
+    <li></li>
+  </ul>
+
+
+ 
+
+  <script src="/public/js/myAjax.js"></script>
+  <script>
+    const uls = document.querySelector('.ul')
+    const newBtn = document.querySelector('.newBtn')
+    const stroage = window.localStorage
+
+    ajax.get({
+      url: '/listblog'
+    }).then(res => {
+      console.log(res, 'res')
+      uls.innerHTML = res.list.map(item => {
+        return `<li data-id=${item.id}>
+                  <a href='/content?id=${item.id}'>  ${item.title} </a>
+                 
+                 <div>${item.time}</div>  
+                  <hr>
+              </li>`
+      }).join('')
+    })
+
+    newBtn.onclick = function () {
+      // 判断本地存储
+      if (stroage.userMsg) {
+        let username = JSON.parse(stroage.userMsg).user
+        window.location.href = '/addnew'
+      } else {
+        window.location.href = '/login'
+      }
+    }
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

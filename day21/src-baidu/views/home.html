@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>首页</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  html,body{
+    width: 100%;
+    height: 100%;
+  }
+  .dialog {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left:0;
+    top:0;
+  }
+  .mask {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: .5;
+    position: absolute;
+    left:0;
+    top:0;
+  }
+  .tip {
+    width: 50%;
+    height: 50%;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+  }
+  .hide {
+     display: none
+  }
+  
+  </style>
+</head>
+<body>
+  
+  <h1>首页 实现点击登陆</h1>
+
+  <div class="dialog hide" >
+    <div class="mask"></div>
+    <div class="tip">
+       账号：<input type="text" class="user"><br>
+       密码：<input type="text" class="pwd"><br>
+       <button class="loginBtn">登陆</button>
+    </div>
+
+  </div>
+
+
+  <button class="btn">登陆</button>
+
+
+  <script src="/public/js/myAjax.js"></script>
+  <script>
+     
+     const btn = document.querySelector('.btn')
+     const loginBtn = document.querySelector('.loginBtn')
+     const user = document.querySelector('.user')
+     const pwd = document.querySelector('.pwd')
+       
+     
+    
+  
+  
+  </script>
+
+</body>
+</html>

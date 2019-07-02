@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>博客正文页面</title>
+</head>
+<body>
+
+  <h1>博客正文页面</h1>
+
+   <ul class="box">
+     <li>  
+        <h2>title</h2>
+        <h3> content </h3>
+     </li>
+   </ul> 
+
+
+  <script src="/public/js/myAjax.js"></script>
+  <script>
+    const box = document.querySelector('.box')
+
+   let contentID = location.search.replace('?id=' , '')
+
+   console.log(contentID, 'contentID')
+   ajax.get({
+     url: '/getContent',
+     data: {
+       id: contentID
+     }
+   }).then(resCon => {
+     console.log(resCon.list[0], '')
+     box.innerHTML = resCon.list.map(item => {
+       return `  <li>  
+        <h2>${item.title}</h2>
+        <h3> ${item.content}</h3>
+     </li>`
+     }).join('')
+   })
+
+
+    
+
+
+
+  </script>
+</body>
+</html>

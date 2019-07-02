@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>博客登陆页面</title>
+</head>
+<body>
+    
+
+  <h1>博客登陆页面</h1>
+
+  <input type="text" class="user"><br>
+  <input type="text" class="pwd"><br>
+  <button id="btn">login</button>
+
+  <script src="/public/js/myAjax.js"></script>
+  <script>
+
+    const btn = document.querySelector('#btn')
+    const user = document.querySelector('.user')
+    const pwd = document.querySelector('.pwd')
+    const stroage = window.localStorage
+    btn.onclick = function() {
+      let  option = {
+        user: user.value.trim(),
+        pwd: pwd.value.trim()
+      }
+      ajax.post({
+        url: '/login',
+        data: option
+      }).then(list => {
+        console.log(list)
+        if (list.code === 0) {
+          // 如果登陆成功就把账户密码存在本地存储中
+          stroage.setItem('userMsg',  JSON.stringify(option))
+
+          window.location.href = '/addnew'
+        }
+      })
+    }
+    
+    
+
+
+
+  </script>
+
+</body>
+</html>
