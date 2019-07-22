@@ -92,11 +92,12 @@ function processRequest(req, res) {
       res.end('<h1>no Found</h1>')
     })
   }
+
   // 大文件读取
   function readefile(readepath, contentType) {
  
     contentType = contentType === 'text/html' ? contentType + ';charset=utf-8' : contentType
-    console.log(contentType, 'contentType')
+
     res.writeHead(200, { 'Content-type': contentType })
     let stream = fs.createReadStream(readepath)
     stream.on('error', function () {
